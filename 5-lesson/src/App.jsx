@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {addCustomerAction, removeCustomerAction} from './store/customerReducer';
+import { fetchCustomers } from './asyncActions/customers';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function App() {
           <button onClick={() => getCash(Number(prompt()))}>Withdraw cash</button>
 
           <button onClick={() => addCustomer(prompt())}>Add customer</button>
-          <button onClick={() => getCash(Number(prompt()))}>Delete customer </button>
+          <button onClick={() => dispatch(fetchCustomers())}>Get customers from database</button>
         </div>
         {customers.length > 0 ? 
           <div>
